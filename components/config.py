@@ -10,7 +10,7 @@ class GameConfig:
     fps: int = 60
     background_color: int =(240, 221, 80)
     border_color: Tuple[int, int, int] = (220, 10, 0)
-    normal_bullet_color: Tuple[int,int,int] =(255, 0, 0)
+    default_bullet_color: Tuple[int,int,int] =(255, 0, 0)
     border_width: int = 10
     spaceship_width: int = 55
     spaceship_height: int = 40

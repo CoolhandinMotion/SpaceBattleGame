@@ -38,5 +38,5 @@ def handle_keys_pressed(keys_pressed, red:Spaceship,yellow:Spaceship):
             RED_SHOOT_COMMAND[command](spaceship=red)
     for command in YELLOW_SHOOT_COMMAND:
         if keys_pressed[command]:
-            RED_SHOOT_COMMAND[command](spaceship=yellow)
+            YELLOW_SHOOT_COMMAND[command](spaceship=yellow)
 

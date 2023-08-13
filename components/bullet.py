@@ -11,4 +11,6 @@ def default_bullet(spaceship_size, spaceship_coordinates):
     return bullet
 
 
+def bullet_movement():
+    ...
 

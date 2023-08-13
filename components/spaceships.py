@@ -73,7 +73,10 @@ class State:
     y: int
     vel: int = GameConfig.space_ship_default_velocity
     health: int = GameConfig.spaceship_default_health
+    body: pygame.Rect = field(init=False, repr=False)
 
+    def __post_init__(self):
+        self.body = pygame.Rect(self.x,self.y,GameConfig.spaceship_width,GameConfig.spaceship_height)
     def increase_health(self, value: int) -> None:
         self.health = self.health + value
 
