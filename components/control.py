@@ -4,6 +4,7 @@ from components.config import GameConfig
 import pygame
 from components.navigation import Navigation
 from components.spaceships import Spaceship, Appearance, State, shoot
+from components.events import RED_IS_HIT, YELLOW_IS_HIT
 
 
 class SpaceshipType(Enum):
@@ -59,4 +60,15 @@ def handle_bullets_shot_movements(red: Spaceship, yellow: Spaceship):
     for bullet in yellow.bullets_shot:
         bullet.y += GameConfig.bullet_default_velocity
         if bullet.y > GameConfig.height:
+            yellow.bullets_shot.remove(bullet)
+
+
+def handle_bullet_hit(red: Spaceship, yellow: Spaceship):
+    for bullet in red.bullets_shot:
+        if yellow.state.body.colliderect(bullet):
+            pygame.event.post(pygame.event.Event(YELLOW_IS_HIT))
+            red.bullets_shot.remove(bullet)
+    for bullet in yellow.bullets_shot:
+        if red.state.body.colliderect(bullet):
+            pygame.event.post(pygame.event.Event(RED_IS_HIT))
             yellow.bullets_shot.remove(bullet)

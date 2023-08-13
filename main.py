@@ -3,7 +3,7 @@ import pygame
 from components.config import GameConfig
 from components.events import handle_events
 import components.spaceships as spaceship
-from components.control import handle_navigation_keys_pressed, handle_bullets_shot_movements,handle_shooting_events
+from components.control import handle_navigation_keys_pressed, handle_bullets_shot_movements,handle_shooting_events,handle_bullet_hit
 
 
 pygame.font.init()
@@ -27,12 +27,13 @@ def main():
 
         game_events = pygame.event.get()
         for event in game_events:
-            handle_events(event)
+            handle_events(event, red, yellow)
             handle_shooting_events(event,red, yellow)
 
         keys_pressed = pygame.key.get_pressed()
         handle_navigation_keys_pressed(keys_pressed, red=red, yellow=yellow)
         handle_bullets_shot_movements(red=red,yellow=yellow)
+        handle_bullet_hit(red, yellow)
         view.draw_game_window(WIN, yellow=yellow, red=red)
 
 
