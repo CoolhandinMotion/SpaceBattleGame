@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from enum import Enum, auto
-from components.bullet import default_bullet
+from components.bullet import default_bullet, BULLET_SHOT_SOUND
 from typing import List
 
 from paths import ASSET_PATH
@@ -102,3 +102,4 @@ def shoot(spaceship: Spaceship):
     if len(spaceship.bullets_shot) < GameConfig.spaceship_max_bullet:
         bullet = default_bullet(spaceship_coordinates=spaceship.state.status, spaceship_size=spaceship.appearance.size)
         spaceship.bullets_shot.append(bullet)
+        BULLET_SHOT_SOUND.play()

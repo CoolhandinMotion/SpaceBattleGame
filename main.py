@@ -7,7 +7,6 @@ from components.control import handle_navigation_keys_pressed, handle_bullets_sh
 
 
 pygame.font.init()
-pygame.mixer.init()
 WIN = view.initiate_game_window()
 view.set_caption()
 
