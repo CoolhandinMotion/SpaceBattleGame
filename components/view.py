@@ -23,15 +23,11 @@ def draw_border(window: pygame.display):
     pygame.draw.rect(window, GameConfig.border_color, border)
 
 
-def draw_bullet(window: pygame.display, bullet: pygame.Rect):
-    pygame.draw.rect(window, GameConfig.default_bullet_color, bullet)
-
-
 def draw_bullets_shot(window: pygame.display, red: Spaceship, yellow: Spaceship):
     for bullet in red.bullets_shot:
-        draw_bullet(window, bullet)
+        pygame.draw.rect(window, GameConfig.default_bullet_color, bullet)
     for bullet in yellow.bullets_shot:
-        draw_bullet(window, bullet)
+        pygame.draw.rect(window, GameConfig.default_bullet_color, bullet)
 
 
 def draw_spaceship(window: pygame.display, spaceship_img: pygame.display, spaceship_coordinates: State.status):
@@ -43,5 +39,5 @@ def draw_game_window(window: pygame.display, red: Spaceship, yellow: Spaceship):
     draw_border(window)
     draw_spaceship(window, yellow.appearance.image, yellow.state.status)
     draw_spaceship(window, red.appearance.image, red.state.status)
-    draw_bullets_shot(window,red=red,yellow=yellow)
+    draw_bullets_shot(window, red=red, yellow=yellow)
     pygame.display.update()

@@ -8,7 +8,7 @@ import pygame
 from components.config import GameConfig
 from collections import namedtuple
 
-spaceship_status = namedtuple('status', ('x', 'y','vel'))
+spaceship_status = namedtuple('status', ('x', 'y', 'vel'))
 spaceship_size = namedtuple('size', ('width', 'height'))
 
 
@@ -76,7 +76,8 @@ class State:
     body: pygame.Rect = field(init=False, repr=False)
 
     def __post_init__(self):
-        self.body = pygame.Rect(self.x,self.y,GameConfig.spaceship_width,GameConfig.spaceship_height)
+        self.body = pygame.Rect(self.x, self.y, GameConfig.spaceship_width, GameConfig.spaceship_height)
+
     def increase_health(self, value: int) -> None:
         self.health = self.health + value
 
@@ -87,7 +88,7 @@ class State:
 
     @property
     def status(self):
-        return spaceship_status(x=self.x, y=self.y,vel=self.vel)
+        return spaceship_status(x=self.x, y=self.y, vel=self.vel)
 
 
 @dataclass
@@ -98,5 +99,6 @@ class Spaceship:
 
 
 def shoot(spaceship: Spaceship):
-    bullet = default_bullet(spaceship_coordinates=spaceship.state.status,spaceship_size=spaceship.appearance.size)
-    spaceship.bullets_shot.append(bullet)
+    if len(spaceship.bullets_shot) < GameConfig.spaceship_max_bullet:
+        bullet = default_bullet(spaceship_coordinates=spaceship.state.status, spaceship_size=spaceship.appearance.size)
+        spaceship.bullets_shot.append(bullet)

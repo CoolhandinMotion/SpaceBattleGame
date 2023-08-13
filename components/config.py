@@ -22,7 +22,7 @@ class GameConfig:
     spaceship_default_health: int =5
     spaceship_max_bullet: int =3
     bullet_default_velocity: int = 10
-    bullet_default_size: int = 5
+    bullet_default_size: int = 10
     game_caption: str = "This is Spaceship battle!!"
 
 
