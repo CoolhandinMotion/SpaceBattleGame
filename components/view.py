@@ -37,7 +37,7 @@ def draw_spaceship(window: pygame.display, spaceship_img: pygame.display, spaces
 def draw_game_window(window: pygame.display, red: Spaceship, yellow: Spaceship):
     window.fill(GameConfig.background_color)
     draw_border(window)
-    draw_spaceship(window, yellow.appearance.image, yellow.state.status)
-    draw_spaceship(window, red.appearance.image, red.state.status)
+    draw_spaceship(window, yellow.appearance.image, yellow.state.body)
+    draw_spaceship(window, red.appearance.image, red.state.body)
     draw_bullets_shot(window, red=red, yellow=yellow)
     pygame.display.update()
