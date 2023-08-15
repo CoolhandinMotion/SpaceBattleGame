@@ -4,7 +4,7 @@ from components.config import GameConfig
 import pygame
 from components.navigation import Navigation
 from components.spaceships import Spaceship, Appearance, State, shoot
-from components.events import RED_IS_HIT, YELLOW_IS_HIT
+from components.events import RED_IS_HIT, YELLOW_IS_HIT, WE_HAVE_A_WINNER
 
 
 class SpaceshipType(Enum):
@@ -72,3 +72,8 @@ def handle_bullet_hit(red: Spaceship, yellow: Spaceship):
         if red.state.body.colliderect(bullet):
             pygame.event.post(pygame.event.Event(RED_IS_HIT))
             yellow.bullets_shot.remove(bullet)
+
+
+def handle_winner(red: Spaceship, yellow: Spaceship):
+    if red.state.health == 0 or yellow.state.health == 0:
+        pygame.event.post(pygame.event.Event(WE_HAVE_A_WINNER))

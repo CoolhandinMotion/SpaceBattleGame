@@ -3,10 +3,11 @@ import pygame
 from components.config import GameConfig
 from components.events import handle_events
 import components.spaceships as spaceship
-from components.control import handle_navigation_keys_pressed, handle_bullets_shot_movements,handle_shooting_events,handle_bullet_hit
+from components.control import handle_navigation_keys_pressed, handle_bullets_shot_movements,handle_shooting_events,\
+    handle_bullet_hit, handle_winner
 
 
-pygame.font.init()
+
 WIN = view.initiate_game_window()
 view.set_caption()
 
@@ -34,6 +35,7 @@ def main():
         handle_navigation_keys_pressed(keys_pressed, red=red, yellow=yellow)
         handle_bullets_shot_movements(red=red,yellow=yellow)
         handle_bullet_hit(red, yellow)
+        handle_winner(red, yellow)
         view.draw_game_window(WIN, yellow=yellow, red=red)
 
 

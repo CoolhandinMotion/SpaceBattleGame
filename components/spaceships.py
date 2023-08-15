@@ -84,11 +84,12 @@ class State:
     def decrease_health(self, value: int = 1) -> None:
         if self.health >= value:
             self.health = self.health - value
-        self.health = 0
+        else:
+            self.health = 0
 
     @property
     def status(self):
-        return spaceship_status(x=self.x, y=self.y, vel=self.vel)
+        return spaceship_status(x=self.body.x, y=self.body.y, vel=self.vel)
 
 
 @dataclass
